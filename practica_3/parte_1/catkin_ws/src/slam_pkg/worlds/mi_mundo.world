@@ -1,0 +1,78 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="entorno_slam_completo">
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- ZONA A: PASILLO RECTO -->
+    <model name="pasillo">
+      <pose>0 0 0 0 0 0</pose>
+      <link name="wall_left">
+        <pose>0 1 0.5 0 0 0</pose>
+        <collision name="collision"><geometry><box><size>20 0.2 1</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>20 0.2 1</size></box></geometry></visual>
+      </link>
+      <link name="wall_right">
+        <pose>0 -1 0.5 0 0 0</pose>
+        <collision name="collision"><geometry><box><size>20 0.2 1</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>20 0.2 1</size></box></geometry></visual>
+      </link>
+    </model>
+
+    <!-- ZONA B: SALA CON CONOS BAJOS -->
+    <model name="cono_bajo">
+      <pose>4 5 0 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><cylinder><radius>0.2</radius><length>0.2</length></cylinder></geometry></collision>
+        <visual name="visual"><geometry><cylinder><radius>0.2</radius><length>0.2</length></cylinder></geometry></visual>
+      </link>
+    </model>
+    <model name="cono_bajo_2">
+      <pose>5 6 0 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><cylinder><radius>0.2</radius><length>0.2</length></cylinder></geometry></collision>
+        <visual name="visual"><geometry><cylinder><radius>0.2</radius><length>0.2</length></cylinder></geometry></visual>
+      </link>
+    </model>
+
+    <!-- ZONA C: PAREDES AISLADAS -->
+    <model name="pared_aislada_1">
+      <pose>-5 -3 0 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>2 0.2 1</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>2 0.2 1</size></box></geometry></visual>
+      </link>
+    </model>
+    <model name="pared_aislada_2">
+      <pose>-6 -5 0 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>2 0.2 1</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>2 0.2 1</size></box></geometry></visual>
+      </link>
+    </model>
+
+    <!-- ZONA D: OBSTÁCULOS RECONOCIBLES -->
+    <include>
+      <uri>model://pine_tree</uri>
+      <pose>-3 4 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://stop_sign</uri>
+      <pose>-2 6 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://construction_barrel</uri>
+      <pose>-2 5 0 0 0 0</pose>
+    </include>
+
+    <!-- ZONA E: ÁREA VACÍA / ABIERTA -->
+    <!-- No añadimos nada para que esté vacía -->
+    
+  </world>
+</sdf>
